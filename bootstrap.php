@@ -21,10 +21,10 @@ add_action( 'plugins_loaded', function() {
 	$registered_versions = apply_filters( 'lesshooks_versions', array() );
 
 	// Sort $registered_versions by key in desc order.
-	krsort( $registered_versions );
+	ksort( $registered_versions );
 
 	// Get the latest version
-	$latest_version = $registered_versions[0];
+	$latest_version = array_pop( $registered_versions );
 
 	// Define some important constants.
 	define( 'LESSHOOKS_VERSION', $latest_version['version'] );
