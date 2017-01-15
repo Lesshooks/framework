@@ -14,3 +14,8 @@ function my_plugin() {
 	Posttype::create( 'Coupons', 'coupons' );
 }
 ```
+
+
+## Full documentation
+
+A full documentation and more information about this framework can be found at [https://lesshooks.github.io/](https://lesshooks.github.io/)
