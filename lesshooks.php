@@ -1,18 +1,14 @@
 <?php
-define( 'LESSHOOKS_VERSION',  '0.0.1' );
-define( 'LESSHOOKS_URL',  plugin_dir_url( __FILE__ ) );
-define( 'LESSHOOKS_DIR',  plugin_dir_path( __FILE__ ) );
+// Set current version of Lesshooks Framework.
+$lesshook_version = '0.0.1';
 
-require_once( LESSHOOKS_DIR . 'lib/class-tgm-plugin-activation.php' );
-require_once( LESSHOOKS_DIR . 'src/posttype.php' );
-require_once( LESSHOOKS_DIR . 'src/notice.php' );
-require_once( LESSHOOKS_DIR . 'src/require_plugin.php' );
+// Set minimum required PHP version.
+$lesshook_minimum_php = '5.3';
 
-/**
- * A placeholder hook to tell other plugins that Lesshooks Framework has been loaded.
-*/
-add_action( 'plugins_loaded', 'register_lesshooks_framework' );
-
-function register_lesshooks_framework() {
-	do_action( 'lesshooks' );
+// Check php version and load bootstrap.php if conditions is met.
+if ( version_compare( PHP_VERSION, $lesshook_minimum_php, '<' ) ) {
+	add_action( 'admin_notices', create_function( '', "echo '<div class=\"error\"><p>" . __( 'Plugin Name requires PHP 5.3 to function properly. Please upgrade PHP or deactivate Plugin Name.', 'plugin-name' ) . "</p></div>';" ) );
+	return;
+} else {
+	require_once( plugin_dir_path( __FILE__ ) . 'bootstrap.php' );
 }

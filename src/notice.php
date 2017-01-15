@@ -1,4 +1,5 @@
 <?php
+namespace Lesshooks\v0_0_1;
 if ( ! class_exists( 'Notice' ) ) {
 	class Notice {
 
